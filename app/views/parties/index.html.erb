@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="span10">
+    <h1>Listing parties</h1>
+
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Wait</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @parties.each do |party| %>
+      <tr>
+        <td><span class="badge badge-info"><%= party.size %></span> <%= party.name %></td>
+        <td><tel><%= party.phone %></tel></td>
+        <td><%= party.wait %></td>
+        <td><%= link_to 'Ready', create_text_path(:party_id => party.id), :remote => true %></td>
+        <td><%= link_to 'Edit', edit_party_path(party) %></td>
+        <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
+
+<div id="new_party_form">
+  <%= render 'form' %>
+</div>
