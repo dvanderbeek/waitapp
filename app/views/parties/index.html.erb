@@ -1,12 +1,12 @@
 <div class="row">
   <div class="span10">
-    <h1>Listing parties</h1>
+    <h1>Your Waitlist</h1>
 
     <table class="table">
       <tr>
         <th>Name</th>
         <th>Phone</th>
-        <th>Wait</th>
+        <th>Quoted Wait</th>
         <th></th>
         <th></th>
         <th></th>
@@ -14,9 +14,9 @@
 
     <% @parties.each do |party| %>
       <tr>
-        <td><span class="badge badge-info"><%= party.size %></span> <%= party.name %></td>
+        <td><%= party.name %> <span class="badge badge-info"><%= party.size %></span></td>
         <td><tel><%= party.phone %></tel></td>
-        <td><%= party.wait %></td>
+        <td><%= party.wait %> (<%= number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0) %>)</td>
         <td><%= link_to 'Ready', create_text_path(:party_id => party.id), :remote => true %></td>
         <td><%= link_to 'Edit', edit_party_path(party) %></td>
         <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>

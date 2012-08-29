@@ -1,8 +1,9 @@
 class PartiesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.all
+    @parties = current_user.parties.all
     @party = Party.new
 
     respond_to do |format|
@@ -14,7 +15,7 @@ class PartiesController < ApplicationController
   # GET /parties/1
   # GET /parties/1.json
   def show
-    @party = Party.find(params[:id])
+    @party = current_user.parties.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +42,7 @@ class PartiesController < ApplicationController
   # POST /parties
   # POST /parties.json
   def create
-    @party = Party.new(params[:party])
+    @party = current_user.parties.build(params[:party])
 
     respond_to do |format|
       if @party.save
@@ -57,7 +58,7 @@ class PartiesController < ApplicationController
   # PUT /parties/1
   # PUT /parties/1.json
   def update
-    @party = Party.find(params[:id])
+    @party = current_user.parties.find(params[:id])
 
     respond_to do |format|
       if @party.update_attributes(params[:party])
@@ -73,7 +74,7 @@ class PartiesController < ApplicationController
   # DELETE /parties/1
   # DELETE /parties/1.json
   def destroy
-    @party = Party.find(params[:id])
+    @party = current_user.parties.find(params[:id])
     @party.destroy
 
     respond_to do |format|
