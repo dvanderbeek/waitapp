@@ -12,15 +12,15 @@ class TextController < ApplicationController
 
 		# set up a client to talk to the Twilio REST API
 		@client = Twilio::REST::Client.new account_sid, auth_token
-  	
-  	respond_to do |format|
-	  	if @client.account.sms.messages.create(
-			  :from => "+1#{twilio_phone_number}",
-			  :to => "+1#{number}",
-			  :body => 'Hey there! Your table is ready.'
-			)
-	  		format.js
-	  	end
-	  end
+		begin
+			response = @client.account.sms.messages.create(
+							  :from => "+1#{twilio_phone_number}",
+							  :to => "+1#{number}",
+							  :body => 'Hey there! Your table is ready.'
+							)
+			redirect_to parties_url, notice: "Success"
+		rescue => e
+			redirect_to parties_url, alert: "#{e}"
+		end
   end
 end
