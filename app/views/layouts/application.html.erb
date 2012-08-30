@@ -14,6 +14,10 @@
 <p class="flash alert alert-error"><%= alert %></p>
 <% end %>
 	<div class="container-fluid">
+		<ul class="hmenu">
+		  <%= render 'devise/menu/registration_items' %>
+		  <%= render 'devise/menu/login_items' %>
+		</ul>
 		<%= yield %>
 	</div>
 </body>

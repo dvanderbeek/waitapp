@@ -3,7 +3,6 @@ class TextController < ApplicationController
 
   def create
   	@party = Party.find(params[:party_id])
-  	number = @party.phone
 
   	# put your own credentials here
 		account_sid = 'AC2d0a8231d2e09ea77a245fe1fb1bedaa'
@@ -15,10 +14,10 @@ class TextController < ApplicationController
 		begin
 			response = @client.account.sms.messages.create(
 							  :from => "+1#{twilio_phone_number}",
-							  :to => "+1#{number}",
-							  :body => 'Hey there! Your table is ready.'
+							  :to => "+1#{@party.phone}",
+							  :body => "Hey there #{@party.name}! Your table is ready."
 							)
-			redirect_to parties_url, notice: "Success"
+			redirect_to parties_url, notice: "Text successfully sent to the party."
 		rescue => e
 			redirect_to parties_url, alert: "#{e}"
 		end
