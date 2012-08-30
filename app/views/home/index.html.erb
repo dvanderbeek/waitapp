@@ -1,2 +1,33 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Waitlist</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+        </ul>
+
+        <%= form_for("user", :url => user_session_path, :html => {:class => "navbar-form pull-right"}) do |f| %>
+          <%= f.text_field :email, :class => 'span2' %>
+          <%= f.password_field :password, :class => 'span2' %>
+          <%= f.submit 'Sign in', :class => 'btn' %>
+        <% end %>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div style="height: 20px;"></div>
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit">
+    <h1>Waitlist</h1>
+    <p>The easy way to keep track of your restaurant waitlist and notify customers when their table is ready!</p>
+    <p><%= link_to 'Get Started »', new_user_registration_path, :class => 'btn btn-primary btn-large' %></p>
+  </div>
+
+</div> <!-- /container -->
