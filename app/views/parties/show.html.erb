@@ -18,7 +18,7 @@
   <%= @party.size %>
 </p>
 
-<%= link_to 'Notify', create_text_path(:party_id => @party.id) %> |
+<%= link_to 'Notify', create_text_path(:party_id => @party.id), :'data-ajax' => "false" %> |
 <%= link_to 'Delete', party_path(@party), :method => :delete %> |
 
 <%= link_to 'Edit', edit_party_path(@party) %> |
