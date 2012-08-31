@@ -18,8 +18,13 @@
   <%= @party.size %>
 </p>
 
-<%= link_to 'Notify', create_text_path(:party_id => @party.id), :'data-ajax' => "false" %> |
-<%= link_to 'Delete', party_path(@party), :method => :delete %> |
-
-<%= link_to 'Edit', edit_party_path(@party) %> |
-<%= link_to 'Back', parties_path %>
+<div data-role="footer" data-position="fixed">
+<div data-role="navbar">
+	<ul>
+		<li><%= link_to 'Notify', create_text_path(:party_id => @party.id), :'data-ajax' => "false" %></li>
+		<li><%= link_to 'Delete', party_path(@party), :method => :delete %></li>
+		<li><%= link_to 'Edit', edit_party_path(@party) %></li>
+		<li><%= link_to 'Back', parties_path %></li>
+	</ul>
+</div><!-- /navbar -->
+</div>

@@ -12,20 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder => "Name" %>
   </div>
   <div class="field">
-    <%= f.label :phone %>
-    <%= f.phone_field :phone %>
+    <%= f.phone_field :phone, :placeholder => "Phone Number" %>
   </div>
   <div class="field">
-    <%= f.label :wait %>
-    <%= f.phone_field :wait %>
+    <%= f.phone_field :wait, :placeholder => "Wait Quote" %>
   </div>
   <div class="field">
-    <%= f.label :size %>
-    <%= f.phone_field :size %>
+    <%= f.phone_field :size, :placeholder => "Party Size" %>
   </div>
   <div class="actions">
     <%= f.submit %>
