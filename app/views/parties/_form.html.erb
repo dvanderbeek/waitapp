@@ -1,4 +1,4 @@
-<%= form_for(@party) do |f| %>
+<%= form_for(@party, :html => { :'data-ajax' => "false" }) do |f| %>
   <% if @party.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>

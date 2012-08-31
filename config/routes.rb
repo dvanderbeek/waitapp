@@ -1,5 +1,6 @@
 Waitlist::Application.routes.draw do
   resources :parties
+  match "parties/:id/delete" => "parties#destroy", :as => :delete_party
   match "text/create/:party_id" => "text#create", :as => :create_text
 
   devise_for :users
