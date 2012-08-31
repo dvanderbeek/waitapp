@@ -12,7 +12,11 @@
 <div data-role="page">
 
 	<div data-role="header" data-position="fixed" data-theme="b">
-		<h1 class="ui-title" role="heading" aria-level="1">Waitlist</h1>
+		<%= render 'devise/menu/registration_items' %>
+		<h1 class="ui-title" role="heading" aria-level="1">
+			<%= link_to "Waitlist", user_signed_in? ? parties_url : home_index_url, :style => "text-decoration: none;" %>
+		</h1>
+		<%= render 'devise/menu/login_items' %>
 	</div><!-- /header -->
 
 	<div data-role="content">	
