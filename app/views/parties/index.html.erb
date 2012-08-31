@@ -1,31 +1,13 @@
-<div class="row">
-  <div class="span10">
-    <h1>Your Waitlist</h1>
-
-    <table class="table">
-      <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Quoted Wait</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-
-    <% @parties.each do |party| %>
-      <tr>
-        <td><span class="badge badge-info"><%= party.size %></span> <%= party.name %></td>
-        <td><tel><%= party.phone %></tel></td>
-        <td><%= party.wait %> (<%= number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0) %>)</td>
-        <td><%= link_to 'Text', create_text_path(:party_id => party.id) %></td>
-        <td><%= link_to 'Edit', edit_party_path(party) %></td>
-        <td><%= link_to 'Delete', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    </table>
+<% @parties.each do |party| %>
+  <div class="party">
+      <div class="size"><%= party.size %></div>
+      <div class="name"><%= party.name %></div>
+      <div class="time"><%= party.wait %> (<%= number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0) %>)</div>
+      <div class="clearfix"></div>
   </div>
+<% end %>
+<div class="actions">
+    Text | Seat | Cancel | No Show
 </div>
 
-<div id="new_party_form">
-  <%= render 'form' %>
-</div>
+<a href="#" class="btn btn-primary" id="add">+</a>
