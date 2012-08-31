@@ -1,7 +1,7 @@
 <ul data-role="listview">
   <% @parties.each do |party| %>
     <li>
-      <%= link_to (raw('<span class="ui-li-count">')+party.size+raw('</span> ')+party.name+" "+party.wait+" ("+number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0)+")"), party %>
+      <a href="parties/<%= party.id %>"><span class="ui-li-count" data-theme="b"><%= party.size %></span> <%= party.name %> <%= party.wait %> (<%= number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0) %>)</a>
     </li>
   <% end %>
 </ul>
