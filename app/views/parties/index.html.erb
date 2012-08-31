@@ -1,13 +1,11 @@
-<% @parties.each do |party| %>
-  <div class="party">
-      <div class="size"><%= party.size %></div>
-      <div class="name"><%= party.name %></div>
-      <div class="time"><%= party.wait %> (<%= number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0) %>)</div>
-      <div class="clearfix"></div>
-  </div>
-<% end %>
+<ul data-role="listview">
+  <% @parties.each do |party| %>
+    <li>
+      <%= link_to (raw('<span class="ui-li-count">')+party.size+raw('</span> ')+party.name+" "+party.wait+" ("+number_with_precision(party.wait - (Time.now - party.created_at)/60, :precision => 0)+")"), party %>
+    </li>
+  <% end %>
+</ul>
 <div class="actions">
     Text | Seat | Cancel | No Show
 </div>
-
-<a href="#" class="btn btn-primary" id="add">+</a>
+<%= link_to "+", new_party_path, :class => "btn btn-primary", :id => "add" %>

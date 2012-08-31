@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Waitlist</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Waitlist</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
-<body>
-	<% if notice %>
-<p class="flash alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-<p class="flash alert alert-error"><%= alert %></p>
-<% end %>
-		<ul class="hmenu">
-		  <%= render 'devise/menu/registration_items' %>
-		  <%= render 'devise/menu/login_items' %>
-		</ul>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed" data-theme="b">
+		<h1 class="ui-title" role="heading" aria-level="1">Fixed toolbars</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<% if notice %>
+			<p class="flash alert alert-success"><%= notice %></p>
+		<% end %>
+		<% if alert %>
+			<p class="flash alert alert-error"><%= alert %></p>
+		<% end %>
 		<%= yield %>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
 </body>
 </html>
