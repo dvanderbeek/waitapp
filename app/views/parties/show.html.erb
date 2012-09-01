@@ -17,6 +17,12 @@
   <b>Size:</b>
   <%= @party.size %>
 </p>
+<% unless @party.notes.nil? %>
+<p>
+  <b>Notes:</b>
+  <%= @party.notes %>
+</p>
+<% end %>
 
 <div data-role="footer" data-position="fixed">
 <div data-role="navbar">

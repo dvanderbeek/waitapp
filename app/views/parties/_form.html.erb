@@ -18,10 +18,13 @@
     <%= f.phone_field :phone, :placeholder => "Phone Number" %>
   </div>
   <div class="field">
-    <%= f.phone_field :wait, :placeholder => "Wait Quote" %>
+    <%= f.phone_field :wait, :placeholder => "Wait Quote (Minutes)" %>
   </div>
   <div class="field">
     <%= f.phone_field :size, :placeholder => "Party Size" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :notes, :placeholder => "Notes (e.g. prefers outdoor seating)" %>
   </div>
   <div class="actions">
     <%= f.submit %>
